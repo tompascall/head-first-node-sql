@@ -1,0 +1,27 @@
+{
+  "name": "head-first-node-sql",
+  "version": "1.0.0",
+  "description": "Port of Head First PHP & MySQL to node",
+  "scripts": {
+    "start": "rm -rf dist && node-hot --config webpack.config.server.js",
+    "test": "jest"
+  },
+  "keywords": [
+    "node",
+    "mysql",
+    "headfirst",
+    "port",
+    "playground"
+  ],
+  "author": "tompascall",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-react-views": "^0.10.5",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2"
+  },
+  "devDependencies": {
+    "jest": "^23.6.0"
+  }
+}
