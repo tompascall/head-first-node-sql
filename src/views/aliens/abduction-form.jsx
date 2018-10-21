@@ -1,7 +1,7 @@
 const React = require('react');
-const DefaultLayout = require('./layouts/default');
+const DefaultLayout = require('../layouts/default');
 
-class HelloMessage extends React.Component {
+class AbductionForm extends React.Component {
   render() {
     return (
       <DefaultLayout title={this.props.title}>
@@ -19,4 +19,4 @@ class HelloMessage extends React.Component {
   }
 }
 
-module.exports = HelloMessage;
+module.exports = AbductionForm;
