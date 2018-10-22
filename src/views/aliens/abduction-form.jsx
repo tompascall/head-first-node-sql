@@ -17,7 +17,7 @@ const AbductionForm = (props) => (
       <style>{ style }</style>
       <h1>Aliens Abducted Me -  Report an Abduction</h1>
       <p>Share your story of alien abduction</p>
-      <form method='post' action='/aliens/thanks'>
+      <form method='post' action='/aliens/abduction-report'>
         <label htmlFor='firstname'>First Name:</label>
         <input name='firstname' defaultValue='tom'/><br/>
         <label htmlFor='lastname'>Last Name:</label>
@@ -35,8 +35,8 @@ const AbductionForm = (props) => (
         <label htmlFor='whattheydid'>What did they do</label>
         <input name='whattheydid' defaultValue='Enlightened me'/><br/>
         <label htmlFor='fangspotted'>Have you seen my dog Fang?</label><br/>
-        Yes <input name='fangspotted' type='radio' defaultValue='yes'/>
-        No <input name='fangspotted' type='radio' defaultValue='no'/><br/>
+        Yes <input name='fangspotted' type='radio' defaultValue='Yes'/>
+        No <input name='fangspotted' type='radio' defaultValue='No' defaultChecked/><br/>
         <label htmlFor='other'>Anything else you want to add:</label>
         <textarea name='other' type='textarea' defaultValue=''/><br/>
         <button type='submit' name='submit'>Send</button>

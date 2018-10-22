@@ -1,14 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const { sendMail } = require('../middleware/aliens');
+const aliens = require('../middleware/aliens');
 
 router.get('/', (req, res) => {
   res.render('aliens/abduction-form');
 });
 
-router.post('/aliens/thanks', [
-  // sendMail,
-  (req, res) => res.render('aliens/thanks', req.body)
+router.post('/aliens/abduction-report', [
+  // aliens.sendMail,
+  aliens.saveAbductionReport,
+  aliens.render
 ]);
 
 module.exports = router;
