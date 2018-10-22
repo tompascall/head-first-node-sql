@@ -17,12 +17,12 @@ const AbductionForm = (props) => (
       <style>{ style }</style>
       <h1>Aliens Abducted Me -  Report an Abduction</h1>
       <p>Share your story of alien abduction</p>
-      <form method='post' action='/test-post'>
+      <form method='post' action='/aliens/thanks'>
         <label htmlFor='firstname'>First Name:</label>
         <input name='firstname' defaultValue='tom'/><br/>
         <label htmlFor='lastname'>Last Name:</label>
         <input name='lastname' defaultValue='pascall'/><br/>
-        <label htmlFor='email '>Email address:</label>
+        <label htmlFor='email'>Email address:</label>
         <input name='email' type='email' defaultValue='tompascall@gmail.com'/><br/>
         <label htmlFor='whenithappened'>When did it happen?</label>
         <input name='whenithappened' type='date' defaultValue='2011-12-23'/><br/>
