@@ -23,7 +23,14 @@ router.get('/send-emails', [
 router.post('/send-emails', [
   elvisStore.getContacts,
   elvisStore.sendMails,
-  (req, res) => res.render('elvis-store/send-emails-feedback', { feedback: res.locals.sendEmailFeedback })
+  (req, res) => res.render('elvis-store/feedback', { feedback: res.locals.sendEmailFeedback })
+]);
+
+router.get('/remove-email', (req, res) => res.render('elvis-store/remove-email'));
+
+router.post('/remove-email', [
+  elvisStore.removeEmail((req) => req.body.email),
+  (req, res) => res.render('elvis-store/feedback', { feedback: res.locals.removeEmailFeedback })
 ]);
 
 module.exports = router;

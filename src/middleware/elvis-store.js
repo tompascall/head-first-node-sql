@@ -44,3 +44,16 @@ exports.sendMails = (req, res, next) => {
   res.locals.sendEmailFeedback = 'Emails have been successfully sent!';
   next();
 };
+
+exports.removeEmail = (emailGetter) => (req, res, next) => {
+  const email = emailGetter(req);
+  const connection = sql.getConnection('elvis_store');
+  connection.connect();
+  connection.query(`DELETE from email_list WHERE email="${email}"`,
+    (error, results, fields) => {
+      if (error) throw error;
+      res.locals.removeEmailFeedback = `${email} has been successfully removed from mailing list!`;
+      next();
+    });
+  connection.end();
+};

@@ -27,8 +27,8 @@ const globalStyle = `
     opacity: 0.7;
   }
   button {
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 70px;
     border-radius: 50px;
     color: white;
     background: red;
@@ -38,13 +38,18 @@ const globalStyle = `
     font-weight: 100;
     letter-spacing: 1px;
     cursor: pointer;
-    transition: box-shadow .1s;
+    transition: box-shadow .1s, letter-spacing 0.1s;
     margin: 20px auto;
     display: block;
     outline: none;
   }
+  button:hover {
+    box-shadow: 4px 2px 5px #888888;
+    letter-spacing: 1.2px;
+  }
   button:active {
     box-shadow: 1px 1px 1px #888888;
+    letter-spacing: .8px;
   }
 `;
 
