@@ -1,11 +1,11 @@
 const React = require('react');
 const DefaultLayout = require('../layouts/default');
 
-const AddEmailForm = (props) => (
+const SubscribeForm = (props) => (
   <DefaultLayout>
     <h1>MakeMeElvis.com</h1>
-    <p>Enter you contact data to be added to the <strong>Make Me Elvis</strong> mailing list:</p>
-    <form method='post' action='/elvis-store/add-email'>
+    <p>Enter you contact data to subscribe to the <strong>Make Me Elvis</strong> mailing list:</p>
+    <form method='post' action='/elvis-store/subscribe'>
       <label htmlFor='firstname'>First Name:</label>
       <input name='firstname' defaultValue='tom'/><br/>
       <label htmlFor='lastname'>Last Name:</label>
@@ -17,4 +17,4 @@ const AddEmailForm = (props) => (
   </DefaultLayout>
 );
 
-module.exports = AddEmailForm;
+module.exports = SubscribeForm;

@@ -17,9 +17,34 @@ const globalStyle = `
   }
   label {
     margin-right: 10px;
+    vertical-align: top;
   }
-  input {
+  input, textarea {
     margin-bottom: 10px;
+    outline: none;
+  }
+  ::placeholder {
+    opacity: 0.7;
+  }
+  button {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    color: white;
+    background: red;
+    border: 1px black;
+    box-shadow: 2px 2px 5px #888888;
+    font-size: 25px;
+    font-weight: 100;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: box-shadow .1s;
+    margin: 20px auto;
+    display: block;
+    outline: none;
+  }
+  button:active {
+    box-shadow: 1px 1px 1px #888888;
   }
 `;
 
