@@ -27,7 +27,7 @@ exports.saveAbductionReport = (req, res, next) => {
     other,
     email
   } } = req;
-  const connection = sql.getConnection();
+  const connection = sql.getConnection('aliendatabase');
   connection.connect();
   connection.query(`INSERT INTO aliens_abduction (
     first_name, last_name, when_it_happened, how_long, how_many,
@@ -40,6 +40,4 @@ exports.saveAbductionReport = (req, res, next) => {
     });
   connection.end();
   next();
-}
-
-exports.render = (req, res) => res.render('aliens/thanks', req.body);
+};

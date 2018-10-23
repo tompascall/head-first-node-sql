@@ -1,20 +1,9 @@
 const React = require('react');
 const DefaultLayout = require('../layouts/default');
 
-const style = `
-  .aliens-form label {
-    margin-right: 10px;
-  }
-
-  .aliens-form input {
-    margin-bottom: 10px;
-  }
-`;
-
 const AbductionForm = (props) => (
   <DefaultLayout>
     <div className='aliens-form'>
-      <style>{ style }</style>
       <h1>Aliens Abducted Me -  Report an Abduction</h1>
       <p>Share your story of alien abduction</p>
       <form method='post' action='/aliens/abduction-report'>
