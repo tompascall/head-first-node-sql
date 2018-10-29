@@ -15,7 +15,7 @@ exports.saveContactData = (req, res, next) => {
   const connection = sql.getConnection('elvis_store');
   connection.connect();
   connection.query(`INSERT INTO email_list (first_name, last_name, email)
-    VALUES ("${firstname}", "${lastname}", "${email}")`,
+    VALUES (?, ?, ?)`,[firstname, lastname, email],
     (error, results, fields) => {
       if (error) throw error;
     });
@@ -49,7 +49,7 @@ exports.removeEmail = (emailGetter) => (req, res, next) => {
   const email = emailGetter(req);
   const connection = sql.getConnection('elvis_store');
   connection.connect();
-  connection.query(`DELETE from email_list WHERE email="${email}"`,
+  connection.query(`DELETE from email_list WHERE email=?`, [email],
     (error, results, fields) => {
       if (error) throw error;
       res.locals.removeEmailFeedback = `${email} has been successfully removed from mailing list!`;
