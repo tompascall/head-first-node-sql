@@ -57,3 +57,5 @@ exports.removeEmail = (emailGetter) => (req, res, next) => {
     });
   connection.end();
 };
+
+exports.isValidSendMailData = (req, res) => !!(req.body.subject && req.body.message);

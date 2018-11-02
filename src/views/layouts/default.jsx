@@ -51,6 +51,9 @@ const globalStyle = `
     box-shadow: 1px 1px 1px #888888;
     letter-spacing: .8px;
   }
+  .input-error {
+    border: 1px solid red;
+  }
 `;
 
 class DefaultLayout extends React.Component {
@@ -58,7 +61,7 @@ class DefaultLayout extends React.Component {
     return (
       <html>
         <head><title>{this.props.title}</title>
-          <style>{ globalStyle }</style>
+          <style dangerouslySetInnerHTML={{__html: globalStyle }} />
         </head>
         <body>{this.props.children}</body>
       </html>
