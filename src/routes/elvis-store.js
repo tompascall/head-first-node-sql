@@ -38,10 +38,13 @@ router.post('/send-emails', [
   })
 ]);
 
-router.get('/remove-email', (req, res) => res.render('elvis-store/remove-email'));
+router.get('/remove-emails', [
+  elvisStore.getRows,
+  (req, res) => res.render('elvis-store/remove-emails', { rows: res.locals.rows })
+]);
 
-router.post('/remove-email', [
-  elvisStore.removeEmail((req) => req.body.email),
+router.post('/remove-emails', [
+  elvisStore.removeEmails((req) => req.body['email-ids']),
   (req, res) => res.render('elvis-store/feedback', { feedback: res.locals.removeEmailFeedback })
 ]);
 

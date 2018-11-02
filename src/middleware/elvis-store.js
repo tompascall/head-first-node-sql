@@ -35,6 +35,19 @@ exports.getContacts = (req, res, next) => {
   connection.end();
 };
 
+exports.getRows = (req, res, next) => {
+  const connection = sql.getConnection('elvis_store');
+  connection.connect();
+  connection.query(`SELECT * from email_list`,
+    (error, results, fields) => {
+      if (error) throw error;
+      res.locals.rows = results;
+      next();
+    });
+  connection.end();
+
+}
+
 exports.sendMails = (req, res, next) => {
   console.log('message', req.body.message);
   console.log('subject', req.body.subject);
@@ -45,17 +58,29 @@ exports.sendMails = (req, res, next) => {
   next();
 };
 
-exports.removeEmail = (emailGetter) => (req, res, next) => {
+exports.removeEmails = (emailGetter) => (req, res, next) => {
   const email = emailGetter(req);
   const connection = sql.getConnection('elvis_store');
   connection.connect();
-  connection.query(`DELETE from email_list WHERE email=?`, [email],
-    (error, results, fields) => {
-      if (error) throw error;
-      res.locals.removeEmailFeedback = `${email} has been successfully removed from mailing list!`;
+  const ids = Object.keys(req.body)
+    .filter(key => key.split('-')[0] === 'id')
+    .map(key => req.body[key]);
+  Promise.all(ids.map(id => {
+    return connection.query(`DELETE from email_list WHERE id=?`, [id],
+      (error, results, fields) => {
+        if (error) throw error;
+      });
+  }))
+    .then(_ => {
+      res.locals.removeEmailFeedback = 'Email have been successfully removed';
+    })
+    .catch(e => {
+      res.locals.removeEmailFeedback = 'Sorry, we could not remove email';
+    })
+    .then(() => {
+      connection.end();
       next();
     });
-  connection.end();
 };
 
 exports.isValidSendMailData = (req, res) => !!(req.body.subject && req.body.message);
