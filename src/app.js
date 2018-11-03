@@ -4,6 +4,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const aliens = require('./routes/aliens');
 const elvisStore = require('./routes/elvis-store');
+const guitarwars = require('./routes/guitarwars');
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jsx');
@@ -15,6 +16,8 @@ app.use(bodyParser.json());
 app.use('/aliens', aliens);
 
 app.use('/elvis-store', elvisStore);
+
+app.use('/guitarwars', guitarwars);
 
 app.use('/', (req, res) => res.render('index'));
 
