@@ -4,7 +4,7 @@ const path = require('path');
 exports.getHeroes = (req, res, next) => {
   const connection = sql.getConnection('guitarwars');
   connection.connect();
-  connection.query(`SELECT * from guitarwars`,
+  connection.query(`SELECT * from guitarwars ORDER BY score DESC`,
     (error, results, fields) => {
       if (error) throw error;
       res.locals.heroes = results;
