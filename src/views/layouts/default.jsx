@@ -22,6 +22,9 @@ const globalStyle = `
   input, textarea {
     margin-bottom: 10px;
     outline: none;
+    border-radius: 20px;
+    height: 25px;
+    width: 30%;
   }
   ::placeholder {
     opacity: 0.7;

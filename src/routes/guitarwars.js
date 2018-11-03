@@ -16,5 +16,12 @@ router.get('/', [
     })
 ]);
 
+router.get('/add-highscore', [
+  (req, res) =>
+    res.render('guitarwars/add-highscore.jsx', {
+      heroes: res.locals.heroes
+    })
+]);
+
 
 module.exports = router;
