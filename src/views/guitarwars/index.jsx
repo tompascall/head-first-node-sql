@@ -9,6 +9,7 @@ const HeroList = (props) => (
         <th>Name</th>
         <th>Date</th>
         <th>Score</th>
+        <th>Screenshot</th>
       </tr>
       {
         props.heroes.map(hero =>
@@ -16,6 +17,9 @@ const HeroList = (props) => (
             <td>{ hero.name}</td>
             <td>{ hero.date.toLocaleString() }</td>
             <td>{ hero.score }</td>
+            <td>
+              <img height='200' width='200' src='#'/>
+            </td>
           </tr>
         )
       }
