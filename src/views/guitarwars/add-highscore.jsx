@@ -4,7 +4,11 @@ const DefaultLayout = require('../layouts/default');
 const AddHighscoresForm = (props) => (
   <DefaultLayout>
     <h1>Guitar Wars - Add your highscores</h1>
-    <form method='post' action='/guitarwars/add-highscore'>
+    <form
+      method='post'
+      action='/guitarwars/add-highscore'
+      encType='multipart/form-data'
+    >
       <label htmlFor='name'>Name:</label>
       <input name='name' required /><br/>
       <label htmlFor='score'>Score:</label>

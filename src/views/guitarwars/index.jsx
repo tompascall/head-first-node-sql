@@ -1,8 +1,8 @@
 const React = require('react');
 const DefaultLayout = require('../layouts/default');
 
-const HeroList = (props) => (
-  <DefaultLayout>
+const HeroList = (props) => {
+  return (<DefaultLayout>
     <h1>Guitar Heroes</h1>
     <table>
       <tr>
@@ -18,13 +18,13 @@ const HeroList = (props) => (
             <td>{ hero.date.toLocaleString() }</td>
             <td>{ hero.score }</td>
             <td>
-              <img height='200' width='200' src='#'/>
+              <img height='200' width='200' src={ `/screenshots/${hero.screenshot}` }/>
             </td>
           </tr>
         )
       }
     </table>
-  </DefaultLayout>
-);
+  </DefaultLayout>)
+};
 
 module.exports = HeroList;
