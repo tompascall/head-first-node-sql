@@ -7,14 +7,14 @@ const HeroList = (props) => (
     <table>
       <tr>
         <th>Name</th>
-        <th>Date</th> 
+        <th>Date</th>
         <th>Score</th>
       </tr>
       {
         props.heroes.map(hero =>
           <tr key={ hero.date }>
             <td>{ hero.name}</td>
-            <td>{ hero.date }</td>
+            <td>{ hero.date.toLocaleString() }</td>
             <td>{ hero.score }</td>
           </tr>
         )
