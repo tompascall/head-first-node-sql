@@ -3,14 +3,6 @@ const router = express.Router();
 const guitarwars = require('../middleware/guitarwars');
 const { getHeroes, saveHighscore } = require('../middleware/guitarwars');
 
-router.get('/', [
-  getHeroes,
-  (req, res) =>
-    res.render('guitarwars/index.jsx', {
-      heroes: res.locals.heroes
-    })
-]);
-
 router.get('/add-highscore', [
   (req, res) =>
     res.render('guitarwars/add-highscore.jsx', {
@@ -20,12 +12,16 @@ router.get('/add-highscore', [
 
 router.post('/add-highscore', [
   saveHighscore,
+  (req, res) =>
+    res.redirect('/guitarwars')
+]);
+
+router.get('/', [
   getHeroes,
   (req, res) =>
     res.render('guitarwars/index.jsx', {
       heroes: res.locals.heroes
     })
 ]);
-
 
 module.exports = router;
