@@ -1,5 +1,6 @@
 const sql = require('../utils/sql');
 const path = require('path');
+const basicAuth = require('express-basic-auth');
 
 exports.getHeroes = (req, res, next) => {
   const connection = sql.getConnection('guitarwars');
@@ -51,3 +52,10 @@ exports.deleteHero = (getId) => async (req, res, next) => {
 
   connection.end();
 };
+
+exports.basicAuth = basicAuth({
+  users: { 'admin': 'password' },
+  challenge: true,
+  realm: 'guitarwar-admin',
+});
+

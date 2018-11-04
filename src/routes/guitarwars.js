@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const guitarwars = require('../middleware/guitarwars');
-const { getHeroes, saveHighscore, deleteHero } = require('../middleware/guitarwars');
+const { getHeroes, saveHighscore, deleteHero, basicAuth } = require('../middleware/guitarwars');
 
 router.get('/add-highscore', [
   (req, res) =>
@@ -17,6 +17,7 @@ router.post('/add-highscore', [
 ]);
 
 router.get('/admin', [
+  basicAuth,
   getHeroes,
   (req, res) => res.render('guitarwars/admin/heroes/list', {
     heroes: res.locals.heroes
@@ -24,6 +25,7 @@ router.get('/admin', [
 ]);
 
 router.post('/admin/heroes/delete/:id', [
+  basicAuth,
   deleteHero((req, res) => req.params.id),
   (req, res) => res.render('guitarwars/feedback', {
     redirectTo: '/guitarwars/admin',

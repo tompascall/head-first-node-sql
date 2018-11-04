@@ -1,5 +1,5 @@
 const React = require('react');
-const DefaultLayout = require('../../layouts/default');
+const DefaultLayout = require('../layouts/default');
 
 const HeroList = (props) => {
   return (<DefaultLayout>
