@@ -29,7 +29,7 @@ const globalStyle = `
   ::placeholder {
     opacity: 0.7;
   }
-  button {
+  button, a.button {
     width: 200px;
     height: 70px;
     border-radius: 50px;
@@ -45,14 +45,21 @@ const globalStyle = `
     margin: 20px auto;
     display: block;
     outline: none;
+    text-decoration: none;
   }
-  button:hover {
+  button:hover, a.button:hover {
     box-shadow: 4px 2px 5px #888888;
     letter-spacing: 1.2px;
   }
-  button:active {
+  button:active, a.button:active {
     box-shadow: 1px 1px 1px #888888;
     letter-spacing: .8px;
+  }
+  a.button > div {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
   }
   .input-error {
     border: 1px solid red;

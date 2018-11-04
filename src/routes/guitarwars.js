@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const guitarwars = require('../middleware/guitarwars');
-const { getHeroes, saveHighscore } = require('../middleware/guitarwars');
+const { getHeroes, saveHighscore, deleteHero } = require('../middleware/guitarwars');
 
 router.get('/add-highscore', [
   (req, res) =>
@@ -14,6 +14,21 @@ router.post('/add-highscore', [
   saveHighscore,
   (req, res) =>
     res.redirect('/guitarwars')
+]);
+
+router.get('/admin', [
+  getHeroes,
+  (req, res) => res.render('guitarwars/admin/heroes/list', {
+    heroes: res.locals.heroes
+  })
+]);
+
+router.post('/admin/heroes/delete/:id', [
+  deleteHero((req, res) => req.params.id),
+  (req, res) => res.render('guitarwars/feedback', {
+    redirectTo: '/guitarwars/admin',
+    message: `${res.locals.heroName}‘s entry has been successfully deleted`
+  })
 ]);
 
 router.get('/', [

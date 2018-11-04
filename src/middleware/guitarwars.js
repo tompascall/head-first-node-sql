@@ -31,3 +31,23 @@ exports.saveHighscore = (req, res, next) => {
     });
   connection.end();
 };
+
+exports.deleteHero = (getId) => async (req, res, next) => {
+  const id = Number(getId(req, res));
+  const connection = sql.getConnection('guitarwars');
+  connection.connect();
+  await connection.query(`SELECT * FROM guitarwars WHERE id=?`, [
+    id
+  ], (error, results, fields) => {
+    if (error) throw error;
+    res.locals.heroName = results[0].name;
+  });
+  await connection.query(`DELETE FROM guitarwars WHERE id=?`, [
+    id,
+  ], (error, results, fields) => {
+    if (error) throw error;
+    next();
+  });
+
+  connection.end();
+};
